@@ -34,7 +34,7 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        $materialRepo = $this->entityManager->getRepository(MaterialRepository::class);
+        $materialRepo = $this->entityManager->getRepository(Material::class);
         $materials = $materialRepo->findWithQuantity();
 
         return $this->render('material/index.html.twig', [

@@ -3,12 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <style
+        <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+        <script
+                src="https://code.jquery.com/jquery-3.4.1.js"
+                integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+                crossorigin="anonymous"></script>
         <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     </body>
 </html>

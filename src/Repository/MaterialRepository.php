@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Material;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use PhpParser\Node\Expr\Array_;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
