@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Material;
+use App\Form\MaterialType;
 use App\Repository\MaterialRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 /**
@@ -71,5 +73,33 @@ class MaterialController extends Controller
 
         return new JsonResponse();
     }
+    
+    /**
+     * 
+     *@return Response
+     * @Route("/{id}/edit", name="material_edit")
+     */
+    public function editMaterial(Material $material, Request $request, ObjectManager $manager)
+    {
 
+
+        $form = $this->createForm(MaterialType::class, $material);
+        
+        $form ->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid() ){
+
+            $material = $form->getData();
+            $manager->persist($material);
+            $manager->flush();
+
+            return $this->redirectToRoute('material');
+
+        }
+
+
+        return $this->render('material/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 }
