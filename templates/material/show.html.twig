@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Materials{% endblock %}
+
+{% block body %}
+
+<table id="material_table" class="display" style="width:100%">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Created At</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+                <td>{{ material.name }}</td>
+                <td>{{ material.quantity }}</td>
+                <td>{{ material.price }}</td>
+                <td>{{ material.name }}</td>
+                <td>
+            </td>
+         </tr>
+    </tbody>
+</table>
+
+
+
+{% endblock %}

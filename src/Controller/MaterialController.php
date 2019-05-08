@@ -40,7 +40,7 @@ class MaterialController extends Controller
         $materials = $materialRepo->findWithQuantity();
 
         return $this->render('material/index.html.twig', [
-            'materials' => $materials,
+            'materials' => $materials
         ]);
     }
 
@@ -49,8 +49,12 @@ class MaterialController extends Controller
      *
      * @Route("/{id}", name="material_show")
      */
-    public function show(Material $material)
+    public function show($id)
     {
+        $repo = $this->getDoctrine()->getRepository(Material::class);
+
+        $material = $repo->find($id);
+
         return $this->render('material/show.html.twig', [
             'material' => $material
         ]);
@@ -88,6 +92,7 @@ class MaterialController extends Controller
         $form ->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid() ){
+
 
             $material = $form->getData();
             $manager->persist($material);
